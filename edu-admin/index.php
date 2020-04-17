@@ -42,19 +42,23 @@
                                    $sql = "SELECT * FROM user_admin WHERE email='$email'";
                                    $data = $conn -> query($sql);
                                    $login_data = $data -> fetch_assoc();
+
+                                   
                                     
                                    if($login_data['email'] == $email ){
 
-                                        
+                                            
 
-                                        if( password_verify($pass, $login_data['pass']) == true){
+                                        if( $login_data['pass'] == $pass ){
 
                                             // $_SESSION['name'] = $login_data['name'];
+
+                                            $_SESSION['name'] = $login_data['name'];
 
                                             header("location:dashboard.php");
 
                                         }else{
-                                            $mess = "<p class='alert alert-danger'> Password is wrong !<button class='close' data-dismiss='alert'>&times;</button></p>";
+                                            $mess = "<p class='alert alert-danger'> Wrong Password!<button class='close' data-dismiss='alert'>&times;</button></p>";
                                         }
 
 
