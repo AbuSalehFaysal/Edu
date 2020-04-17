@@ -37,7 +37,7 @@
 
                     //password hashing
                     $pass = $_POST['pass'];
-                    $hash_pass = password_hash($pass, PASSWORD_DEFAULT);
+                    // $hash_pass = password_hash($pass, PASSWORD_DEFAULT);
                     
 
                     if( isset($_POST['check']) AND $_POST['check'] == 'Agree' ){ 
@@ -59,7 +59,7 @@
                         $mess = "<p class='alert alert-danger'>Please, agree with the terms and condiotion!<button class='close' data-dismiss='alert'>&times;</button></p>";
                     } else {
                         # code...
-                        $sql = "INSERT INTO user_admin (name, email, pass, status) VALUES ('$name','$email','$hash_pass','active')";
+                        $sql = "INSERT INTO user_admin (name, email, pass, status) VALUES ('$name','$email','$pass','active')";
                         $conn -> query($sql);
 
                         $mess = "<p class='alert alert-success'>Congratulations!<button class='close' data-dismiss='alert'>&times;</button></p>";
