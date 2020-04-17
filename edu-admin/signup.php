@@ -1,3 +1,13 @@
+<?php 
+
+    
+    require_once "libs/function.php";
+
+
+ ?>
+
+
+
 <!DOCTYPE html>
 <html lang="en" class=" ">
 
@@ -15,31 +25,91 @@
         <div class="container aside-xl"> <a class="navbar-brand block" href="index.html">Scale</a>
             <section class="m-b-lg">
                 <header class="wrapper text-center"> <strong>Sign up to find interesting thing</strong> </header>
-                <form action="http://flatfull.com/themes/scale/index.html">
+                
+                <?php 
+
+
+                if (isset($_POST['submit'])) {
+                    # code...
+                    $name = $_POST['name'];
+                    $email = $_POST['email'];
+
+
+                    //password hashing
+                    $pass = $_POST['pass'];
+                    $hash_pass = password_hash($pass, PASSWORD_DEFAULT);
+                    
+
+                    if( isset($_POST['check']) AND $_POST['check'] == 'Agree' ){ 
+
+                  
+                        # code...
+                        $allow = true;
+                    } else {
+                        # code...
+                        $allow = false;
+                    }
+                    
+
+                    if (empty($name) || empty($email) || empty($pass)) {
+                        # code...
+                        $mess = "<p class='alert alert-danger'>Please, fill the form properly!<button class='close' data-dismiss='alert'>&times;</button></p>";
+                    }elseif ($allow == false) {
+                        # code...
+                        $mess = "<p class='alert alert-danger'>Please, agree with the terms and condiotion!<button class='close' data-dismiss='alert'>&times;</button></p>";
+                    } else {
+                        # code...
+                        $sql = "INSERT INTO user_admin (name, email, pass, status) VALUES ('$name','$email','$hash_pass','active')";
+                        $conn -> query($sql);
+
+                        $mess = "<p class='alert alert-success'>Congratulations!<button class='close' data-dismiss='alert'>&times;</button></p>";
+                    }
+                    
+                }
+
+
+                 ?>
+
+                 <div class="mess">
+                    <?php  
+
+                        if( isset($mess) ){
+                        echo $mess;
+                        
+                        }
+
+                    ?>
+                </div>
+    
+
+
+
+                <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
                     <div class="list-group">
                         <div class="list-group-item">
-                            <input placeholder="Name" class="form-control no-border"> </div>
+                            <input name="name" placeholder="Name" class="form-control no-border"> </div>
                         <div class="list-group-item">
-                            <input type="email" placeholder="Email" class="form-control no-border"> </div>
+                            <input name="email" type="text" placeholder="Email" class="form-control no-border"> </div>
                         <div class="list-group-item">
-                            <input type="password" placeholder="Password" class="form-control no-border"> </div>
+                            <input name="pass" type="password" placeholder="Password" class="form-control no-border"> </div>
                     </div>
                     <div class="checkbox m-b">
                         <label>
-                            <input type="checkbox"> Agree the <a href="#">terms and policy</a> </label>
+                            <input name="check" value="Agree" type="checkbox"> Agree the <a href="#">terms and policy</a> </label>
                     </div>
-                    <button type="submit" class="btn btn-lg btn-primary btn-block">Sign up</button>
+                    <button name="submit"  type="submit" class="btn btn-lg btn-primary btn-block">Sign up</button>
                     <div class="line line-dashed"></div>
-                    <p class="text-muted text-center"><small>Already have an account?</small></p> <a href="index.php" class="btn btn-lg btn-default btn-block">Sign in</a> </form>
+                    <p class="text-muted text-center"><small>Already have an account?</small></p> <a href="index.php" class="btn btn-lg btn-default btn-block">Sign in</a> 
+                </form>
+
+
+
+
             </section>
         </div>
     </section>
     <!-- footer -->
-    <footer id="footer">
-        <div class="text-center padder clearfix">
-            <p> <small>Web app framework base on Bootstrap<br>&copy; 2013</small> </p>
-        </div>
-    </footer>
+    
     <!-- / footer -->
     <!-- Bootstrap -->
     <!-- App -->

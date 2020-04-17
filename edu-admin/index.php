@@ -1,3 +1,11 @@
+<?php 
+
+    
+    require_once "libs/function.php";
+
+
+ ?>
+
 <!DOCTYPE html>
 <html lang="en" class=" ">
 
@@ -15,17 +23,55 @@
         <div class="container aside-xl"> <a class="navbar-brand block" href="index.html">Scale</a>
             <section class="m-b-lg">
                 <header class="wrapper text-center"> <strong>Sign in to get in touch</strong> </header>
-                <form action="http://flatfull.com/themes/scale/index.html">
+
+
+                <?php 
+
+                    if ( isset($_POST['submit']) ) {
+                        # code...
+                        $email = $_POST['email'];
+                        $pass = $_POST['pass'];
+
+                        if (empty($email) || empty($pass)) {
+                            # code...
+                            $mess = "<p class='alert alert-danger'>Please, fill the form properly!<button class='close' data-dismiss='alert'>&times;</button></p>";
+                        } else {
+                            # code...
+                        }
+                        
+                    }
+
+                 ?>
+
+
+                 <div class="mess">
+                    <?php  
+
+                        if( isset($mess) ){
+                        echo $mess;
+                        
+                        }
+
+                    ?>
+                </div>
+    
+
+
+                <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
                     <div class="list-group">
                         <div class="list-group-item">
-                            <input type="email" placeholder="Email" class="form-control no-border"> </div>
+                            <input name="email" type="text" placeholder="Email" class="form-control no-border"> </div>
                         <div class="list-group-item">
-                            <input type="password" placeholder="Password" class="form-control no-border"> </div>
+                            <input name="pass" type="password" placeholder="Password" class="form-control no-border"> </div>
                     </div>
-                    <button type="submit" class="btn btn-lg btn-primary btn-block">Sign in</button>
+                    <button name="submit" type="submit" class="btn btn-lg btn-primary btn-block">Sign in</button>
                     <div class="text-center m-t m-b"><a href="#"><small>Forgot password?</small></a></div>
                     <div class="line line-dashed"></div>
-                    <p class="text-muted text-center"><small>Do not have an account?</small></p> <a href="signup.php" class="btn btn-lg btn-default btn-block">Create an account</a> </form>
+                    <p class="text-muted text-center"><small>Do not have an account?</small></p> <a href="signup.php" class="btn btn-lg btn-default btn-block">Create an account</a> 
+                </form>
+
+
+
             </section>
         </div>
     </section>
