@@ -25,23 +25,51 @@
                 <header class="wrapper text-center"> <strong>Sign in to get in touch</strong> </header>
 
 
-                <?php 
+                <?php  
 
-                    if ( isset($_POST['submit']) ) {
-                        # code...
-                        $email = $_POST['email'];
-                        $pass = $_POST['pass'];
+                           if( isset($_POST['submit']) ){
 
-                        if (empty($email) || empty($pass)) {
-                            # code...
-                            $mess = "<p class='alert alert-danger'>Please, fill the form properly!<button class='close' data-dismiss='alert'>&times;</button></p>";
-                        } else {
-                            # code...
-                        }
-                        
-                    }
 
-                 ?>
+                               $pass = $_POST['pass'];
+                               $email = $_POST['email'];
+
+
+
+                               if( empty($email) || empty($pass) ){
+                                   $mess = "<p class='alert alert-danger'> Field Must not be Empty !<button class='close' data-dismiss='alert'>&times;</button></p>";
+                               }else {
+
+                                   $sql = "SELECT * FROM user_admin WHERE email='$email'";
+                                   $data = $conn -> query($sql);
+                                   $login_data = $data -> fetch_assoc();
+                                    
+                                   if($login_data['email'] == $email ){
+
+                                        
+
+                                        if( password_verify($pass, $login_data['pass']) == true){
+
+                                            // $_SESSION['name'] = $login_data['name'];
+
+                                            header("location:dashboard.php");
+
+                                        }else{
+                                            $mess = "<p class='alert alert-danger'> Password is wrong !<button class='close' data-dismiss='alert'>&times;</button></p>";
+                                        }
+
+
+                                   }else{
+                                        $mess = "<p class='alert alert-danger'> Email is not valid !<button class='close' data-dismiss='alert'>&times;</button></p>";
+                                   }
+
+
+                               }   
+
+
+                           }
+
+
+                       ?>
 
 
                  <div class="mess">
