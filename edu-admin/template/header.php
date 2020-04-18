@@ -139,10 +139,10 @@
                                             <a href="#" class="auto"> <span class="pull-right text-muted"> <i class="i i-circle-sm-o text"></i> <i class="i i-circle-sm text-active"></i> </span> <b class="badge bg-danger pull-right"></b> <i class="i i-stack icon"> </i> <span class="font-bold">Students</span> </a>
                                             <ul class="nav dk">
                                                 <li>
-                                                    <a href="layout-color.html" class="auto"> <i class="i i-dot"></i> <span>All Students</span> </a>
+                                                    <a href="all_students.php" class="auto"> <i class="i i-dot"></i> <span>All Students</span> </a>
                                                 </li>
                                                 <li>
-                                                    <a href="layout-hbox.html" class="auto"> <i class="i i-dot"></i> <span>Add New Student</span> </a>
+                                                    <a href="add_new_student.php" class="auto"> <i class="i i-dot"></i> <span>Add New Student</span> </a>
                                                 </li>
                                                 
                                             </ul>

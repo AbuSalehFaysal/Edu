@@ -36,7 +36,7 @@
 
 
                                if( empty($email) || empty($pass) ){
-                                   $mess = "<p class='alert alert-danger'> Field Must not be Empty !<button class='close' data-dismiss='alert'>&times;</button></p>";
+                                   $mess = "<p class='alert alert-danger'> Please, fill the form properly!<button class='close' data-dismiss='alert'>&times;</button></p>";
                                }else {
 
                                    $sql = "SELECT * FROM user_admin WHERE email='$email'";
