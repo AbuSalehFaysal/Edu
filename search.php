@@ -1,3 +1,36 @@
+<?php 
+
+		require_once "edu-admin/libs/function.php";
+
+
+		if ( isset($_POST['submit']) ) {
+			# code...
+			$board = $_POST['board'];
+			$roll = $_POST['roll'];
+			$reg = $_POST['reg'];
+
+
+			$sql = "SELECT * FROM students_results WHERE board='$board' AND roll='$roll' AND reg='$reg' " ;
+			$data = $conn -> query($sql);
+
+			$show_result = $data -> fetch_assoc();
+
+			
+
+
+		}else{
+			header("location:index.php");
+		}
+		
+
+
+
+
+ ?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,33 +59,51 @@
 
 				<div class="student-info">
 					<div class="student-photo">
-						<img src="assets/images/Piet-Olivier-photo-passport-size.jpeg" alt="">
+						<img src="edu-admin/students_pic/<?php echo $show_result['stu_pic']; ?>" alt="">
 					</div>
 					<div class="student-details">
 						<table>
 							<tr>
 								<td>Name</td>
-								<td>Asraful Haque</td>
+								<td><?php echo $show_result['name']; ?></td>
 							</tr>
 							<tr>
 								<td>Roll</td>
-								<td>505050</td>
+								<td><?php echo $show_result['roll']; ?></td>
 							</tr>
 							<tr>
 								<td>Reg.</td>
-								<td>101010</td>
+								<td><?php echo $show_result['reg']; ?></td>
 							</tr>
 							<tr>
 								<td>Board</td>
-								<td>Dhaka</td>
+								<td><?php echo $show_result['board']; ?></td>
 							</tr>
 							<tr>
 								<td>Institute</td>
-								<td>CT</td>
+								<td><?php echo $show_result['institute']; ?></td>
 							</tr>
 							<tr>
 								<td>Result</td>
+
+								<?php 
+
+									if($show_result['result'] == 'Passed') :
+
+								 ?>
 								<td><span style="color:green;font-weight:bold;">Passed<span></td>
+
+									<?php 
+
+								else : 
+									?>
+
+								<td><span style="color:red;font-weight:bold;">Failed<span></td>	
+
+								
+								<?php endif ; ?>	 
+
+									 
 							</tr>
 						</table>
 					</div>
@@ -68,42 +119,64 @@
 							<td>GPA</td>
 							<td>CGPA</td>
 						</tr>
+
+
+<!-- 					
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ -->
+
+
+
 						<tr>
 							<td>Bangla</td>
-							<td>89</td>
-							<td>5</td>
-							<td>4.8</td>
-							<td rowspan="6">4.8</td>
+							<td><?php echo $show_result['b_m']; ?></td>
+							<td><?php echo $show_result['b_g']; ?></td>
+							<td><?php echo $show_result['b_c']; ?></td>
+							<td rowspan="6"><?php echo $show_result['cgpa']; ?></td>
 						</tr>
 						<tr>
-							<td>Bangla</td>
-							<td>89</td>
-							<td>5</td>
-							<td>4.8</td>
+							<td>English</td>
+							<td><?php echo $show_result['e_m']; ?></td>
+							<td><?php echo $show_result['e_g']; ?></td>
+							<td><?php echo $show_result['e_c']; ?></td>
 						</tr>
 						<tr>
-							<td>Bangla</td>
-							<td>89</td>
-							<td>5</td>
-							<td>4.8</td>
+							<td>Math</td>
+							<td><?php echo $show_result['m_m']; ?></td>
+							<td><?php echo $show_result['m_g']; ?></td>
+							<td><?php echo $show_result['m_c']; ?></td>
 						</tr>
 						<tr>
-							<td>Bangla</td>
-							<td>89</td>
-							<td>5</td>
-							<td>4.8</td>
+							<td>Science</td>
+							<td><?php echo $show_result['s_m']; ?></td>
+							<td><?php echo $show_result['s_g']; ?></td>
+							<td><?php echo $show_result['s_c']; ?></td>
 						</tr>
 						<tr>
-							<td>Bangla</td>
-							<td>89</td>
-							<td>5</td>
-							<td>4.8</td>
+							<td>Social Science</td>
+							<td><?php echo $show_result['ss_m']; ?></td>
+							<td><?php echo $show_result['ss_g']; ?></td>
+							<td><?php echo $show_result['ss_c']; ?></td>
 						</tr>
 						<tr>
-							<td>Bangla</td>
-							<td>89</td>
-							<td>5</td>
-							<td>4.8</td>
+							<td>Religion</td>
+							<td><?php echo $show_result['r_m']; ?></td>
+							<td><?php echo $show_result['r_g']; ?></td>
+							<td><?php echo $show_result['r_c']; ?></td>
 						</tr>
 					</table>
 				</div>

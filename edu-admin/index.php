@@ -97,7 +97,7 @@
                             <input name="pass" type="password" placeholder="Password" class="form-control no-border"> </div>
                     </div>
                     <button name="submit" type="submit" class="btn btn-lg btn-primary btn-block">Sign in</button>
-                    <div class="text-center m-t m-b"><a href="#"><small>Forgot password?</small></a></div>
+                    <div class="text-center m-t m-b"><a href=""><small></small></a></div>
                     <div class="line line-dashed"></div>
                     <p class="text-muted text-center"><small>Do not have an account?</small></p> <a href="signup.php" class="btn btn-lg btn-default btn-block">Create an account</a> 
                 </form>
@@ -110,7 +110,7 @@
     <!-- footer -->
     <footer id="footer">
         <div class="text-center padder">
-            <p> <small>Web app framework base on Bootstrap<br>&copy; 2013</small> </p>
+            <p> <small><br></small> </p>
         </div>
     </footer>
     <!-- / footer -->

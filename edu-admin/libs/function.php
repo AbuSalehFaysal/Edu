@@ -74,6 +74,44 @@
 	}
 
 
+	function checkGradeAlpha($stu_cgpa) {
+
+		if ($stu_cgpa >= 0 && $stu_cgpa < 1) {
+			# code...
+			$grade_alpha = 'F';
+
+		} elseif ($stu_cgpa >= 1 && $stu_cgpa < 2) {
+			# code...
+			$grade_alpha = 'D';
+
+		}elseif ($stu_cgpa >= 2 && $stu_cgpa < 3) {
+			# code...
+			$grade_alpha = 'C';
+
+		}elseif ($stu_cgpa >= 3 && $stu_cgpa < 3.5) {
+			# code...
+			$grade_alpha = 'B';
+
+		}elseif ($stu_cgpa >= 3.5 && $stu_cgpa < 4) {
+			# code...
+			$grade_alpha = 'A-';
+
+		}elseif ($stu_cgpa >= 4 && $stu_cgpa < 5) {
+			# code...
+			$grade_alpha = 'A';
+
+		}elseif ($stu_cgpa == 5 ) {
+			# code...
+			$grade_alpha = 'A+';
+
+		}else{
+			$grade_alpha = 'Invalid';
+		}
+		
+		return $grade_alpha;
+	}
+
+
 	function checkResult($ban_Gpa, $en_Gpa, $mat_Gpa, $sci_Gpa, $ss_Gpa, $religion_Gpa){
 
 		if ($ban_Gpa == 0 || $en_Gpa == 0 || $mat_Gpa == 0 || $sci_Gpa == 0 || $ss_Gpa == 0 || $religion_Gpa == 0 ) {
@@ -86,6 +124,17 @@
 
 		return $result;
 		
+	}
+
+
+
+	function checkResultExist($stu_roll, $reg, $conn) {
+
+		$sql = "SELECT * FROM students_results WHERE roll= '$stu_roll' AND reg='$reg'";
+		$data = $conn  -> query($sql);
+
+		return $data -> num_rows;
+
 	}
 
 

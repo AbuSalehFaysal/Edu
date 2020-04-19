@@ -53,7 +53,46 @@
                                     <th><?php echo $all_students_data['board']; ?></th>
                                     <th><?php echo $all_students_data['institute']; ?></th>
                                     <th><img style="width: 50px; height: 50px;" src="students_pic/<?php echo $all_students_data['stu_pic']; ?>" alt=""></th>
+
+
+                                    <?php 
+
+
+                                        $result_num = checkResultExist($all_students_data['stu_roll'], $all_students_data['reg'], $conn);
+
+                                        if($result_num == 0) :
+
+
+                                     ?>
+
+
                                     <th><a class="btn btn-info" href="add_result.php?sl=<?php echo $all_students_data['stu_sl']; ?>">Add Result</a></th>
+
+                                        <?php 
+
+                                            else : 
+
+
+                                            $sql = "SELECT * FROM students_results";
+                                            $result = $conn -> query($sql);
+
+                                            
+                                            $single_result = $result -> fetch_assoc();
+
+
+
+
+                                         ?>
+
+                                         <th><a class="btn btn-success" href="update_result.php?sl=<?php echo $single_result['result_sl']; ?>">Update Result</a></th>
+
+                                            <?php 
+
+                                                endif ;
+
+                                             ?>
+
+
                                 </tr>
 
                                 <?php 

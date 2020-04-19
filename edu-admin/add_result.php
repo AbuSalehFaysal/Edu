@@ -69,7 +69,13 @@
             $religion_grade = checkGrade($religion);
             $religion_Gpa = checkGpa($religion);
 
+
+
             $stu_cgpa = checkCgpa($ban_Gpa, $en_Gpa, $mat_Gpa, $sci_Gpa, $ss_Gpa, $religion_Gpa);
+
+            $stu_cgpa_round = round($stu_cgpa, 2);
+
+            $grade_alpha = checkGradeAlpha($stu_cgpa);
 
             $result = checkResult($ban_Gpa, $en_Gpa, $mat_Gpa, $sci_Gpa, $ss_Gpa, $religion_Gpa);
             
@@ -84,10 +90,10 @@
                 // $b = "";  
 
 
-                $sql = "INSERT INTO students_results (name, roll, reg, board, institute, stu_pic, b_m, b_g, b_c, e_m, e_g, e_c, m_m, m_g, m_c, s_m, s_g, s_c, ss_m, ss_g, ss_c, r_m, r_g, r_c, cgpa, result) VALUES ('$stu_name', '$stu_roll', '$reg', '$board', '$institute', '$stu_pic', '$ban', '$ban_grade', '$ban_Gpa', '$en', '$en_grade', '$en_Gpa', '$mat', '$mat_grade', '$mat_Gpa', '$sci', '$sci_grade', '$sci_Gpa', '$ss', '$ss_grade', '$ss_Gpa', '$religion', '$religion_grade', '$religion_Gpa', '$stu_cgpa', '$result')";
+                $sql = "INSERT INTO students_results (name, roll, reg, board, institute, stu_pic, b_m, b_g, b_c, e_m, e_g, e_c, m_m, m_g, m_c, s_m, s_g, s_c, ss_m, ss_g, ss_c, r_m, r_g, r_c, grade_alpha, cgpa, result) VALUES ('$stu_name', '$stu_roll', '$reg', '$board', '$institute', '$stu_pic', '$ban', '$ban_grade', '$ban_Gpa', '$en', '$en_grade', '$en_Gpa', '$mat', '$mat_grade', '$mat_Gpa', '$sci', '$sci_grade', '$sci_Gpa', '$ss', '$ss_grade', '$ss_Gpa', '$religion', '$religion_grade', '$religion_Gpa', '$grade_alpha', '$stu_cgpa_round', '$result')";
                 $conn -> query($sql);
 
-                $mess = "<p class='alert alert-success'> Congartualtions, informations are added successfully!<button class='close' data-dismiss='alert'>&times;</button></p>";
+                $mess = "<p class='alert alert-success'> Congartualtions, marks are added successfully!<button class='close' data-dismiss='alert'>&times;</button></p>";
 
 
 
