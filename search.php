@@ -38,7 +38,7 @@
 	<title>Education Board Bangladesh</title>
 	<link rel="stylesheet" href="assets/css/syle.css">
 
-	<link rel="shortcut icon" type="image/x-icon" href="assets/images/bd_logo.png">
+	<link rel="shortcut icon" type="" href="">
 </head>
 <body>
 	
@@ -185,19 +185,9 @@
 
 
 		</div>
-		<div class="w-footer">
-			<div class="f-left">
-				<p>©2005-2019 Ministry of Education, All rights reserved.</p>
-			</div>
-			<div class="f-right">
-				<span>Powered by</span>
-				<img src="assets/images/tbl_logo.png" alt="">
-			</div>
-		</div>
+		
 	</div>
-	<div class="bottom">
-		<img src="assets/images/play.png" alt="">
-	</div>
+	
 
 	
 
